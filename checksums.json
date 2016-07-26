@@ -1,0 +1,19 @@
+{
+  "Gemfile": "dbc1a15e3a264c03878028240cfc5d89",
+  "README.md": "d7c5726ea8a1eea834484be925ba8b03",
+  "Rakefile": "20b80e526e351a74df2001f504e756d2",
+  "manifests/config.pp": "d1cccf43b1d7249a207a3d2ff489835a",
+  "manifests/domain.pp": "d08064cfe00e401ec32fc1fbedb5deae",
+  "manifests/init.pp": "ec417364d68e976387dae8abadbdbde2",
+  "manifests/install.pp": "b59d52a1e6fb3329508125171199a491",
+  "metadata.json": "70dfcc0a852582f6cfe9dc6bd8cb48dd",
+  "spec/classes/init_spec.rb": "004131e61c48a1ad3e8a2484c8a8ddef",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+  "templates/index.html.erb": "74b0c3a3f764763b862a4c14b37b0fcf",
+  "templates/robot.conf.erb": "a78fb91e5722a1e7d5e048dfe8f1d985",
+  "templates/sympa.conf.erb": "1ba6b10c8fbc289584ee919c18b90dc6",
+  "templates/sympa.responsefile.erb": "ef72c003a091f48ce8acd611353bcfcf",
+  "templates/sympa_vhost_fragment.erb": "4581c414e0c6eb128e70433e7798974b",
+  "templates/wwsympa.conf.erb": "0adfac2bad27665f9ed90c34fa891b9d",
+  "tests/init.pp": "f82ae4d0b8c42cd458903e8dbd8dd922"
+}

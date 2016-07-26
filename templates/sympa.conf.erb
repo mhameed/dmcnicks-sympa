@@ -1,0 +1,109 @@
+# MANAGED BY PUPPET -- DO NOT EDIT MANUALLY
+
+home /var/lib/sympa/list_data
+etc  /etc/sympa
+
+pidfile            /var/run/sympa/sympa.pid
+pidfile_distribute /var/run/sympa/sympa-distribute.pid
+pidfile_creation   /var/run/sympa/sympa-creation.pid
+pidfile_bulk       /var/run/sympa/bulk.pid
+
+umask 027
+
+spool          /var/spool/sympa
+queue          /var/spool/sympa/msg
+queuebounce    /var/spool/sympa/bounce
+queueautomatic /var/spool/sympa/automatic
+queuedigest    /var/spool/sympa/digest
+queuemod       /var/spool/sympa/moderation
+queuetopic     /var/spool/sympa/topic
+queueauth      /var/spool/sympa/auth
+queueoutgoing  /var/spool/sympa/outgoing
+queuetask      /var/spool/sympa/task
+queuesubscribe /var/spool/sympa/subscribe
+
+static_content_path /var/lib/sympa/static_content
+static_content_url  /static-sympa
+
+syslog                 LOCAL1
+log_socket_type        unix
+log_level              0
+log_smtp               off
+logs_expiration_period 1
+
+domain      <%= @admin_domain %>
+listmaster  <%= @listmasters.join(',') %>
+email       sympa
+create_list public_listmaster
+edit_list   owner
+
+cache_list_config     none
+sympa_priority        1
+default_list_priority 5
+sympa_packet_priority 5
+request_priority      0
+owner_priority        9
+
+default_ttl               3600
+default_distribution_ttl  300
+default_sql_fetch_timeout 300
+
+bulk_fork_threshold 1
+bulk_max_count      3
+bulk_lazytime       600
+bulk_wait_to_fork   10
+bulk_sleep          1
+
+cookie `cat /etc/sympa/cookie`
+
+legacy_character_support_feature	off
+
+max_size              5242880
+use_blacklist         send,create_list
+rfc2369_header_fields help,subscribe,unsubscribe,post,owner,archive
+remove_headers        X-Sympa-To,X-Family-To,Return-Receipt-To,Precedence,X-Sequence,Disposition-Notification-To
+
+reject_mail_from_automates_feature on
+
+bounce_warn_rate   30
+bounce_halt_rate   50
+expire_bounce_task daily
+
+loop_command_max             20
+loop_command_sampling_delay  3600
+loop_command_decrease_factor 0.5
+loop_prevention_regex        MAILER-DAEMON|mailer-daemon|sympa|listserv|majordomo|smartlist|mailman
+
+lang           en_US
+supported_lang en_US
+
+welcome_return_path owner
+remind_return_path owner
+
+sendmail /usr/sbin/sendmail
+nrcpt    25
+avg      10
+maxsmtp  40
+
+dkim_feature            off
+dkim_add_signature_to   robot,list
+dkim_signature_apply_on md5_authenticated_messages,smime_authenticated_messages,dkim_authenticated_messages,editor_validated_messages
+dkim_header_list        from:sender:reply-to:subject:date:message-id:to:cc:list-id:list-help:list-unsubscribe:list-subscribe:list-post:list-owner:list-archive:in-reply-to:references:resent-date:resent-from:resent-sender:resent-to:resent-cc:resent-message-id:mime-version:content-type:content-transfer-encoding:content-id:content-description
+
+openssl      /usr/bin/openssl
+capath       /etc/ssl/certs
+cafile       /etc/ssl/certs/ca-certificates.crt
+ssl_cert_dir /var/lib/sympa/list_data/X509-user-certs
+crl_dir      /var/lib/sympa/list_data/crl
+
+db_type   mysql
+db_name   sympa
+db_user   sympa
+db_passwd <%= @db_password %>
+
+max_wrong_password 19
+
+spam_status                     x-spam-status
+antispam_tag_header_name        X-Spam-Status
+antispam_tag_header_spam_regexp ^\s*Yes
+antispam_tag_header_ham_regexp  ^\s*No

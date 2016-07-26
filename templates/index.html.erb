@@ -1,0 +1,7 @@
+<h1><%= @vhost_title %></h1>
+
+<ul>
+<% @list_domains.each do |domain| -%>
+  <li> <a href="https://<%= @vhost_name %>/sympa/<%= domain %>/">Sympa for <%= domain %></a> </li>
+<% end -%>
+</ul>

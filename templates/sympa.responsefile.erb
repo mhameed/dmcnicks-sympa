@@ -1,0 +1,7 @@
+sympa wwsympa/webserver_type select Other
+sympa wwsympa/webserver_restart boolean false
+sympa sympa/dbconfig-install boolean true
+sympa sympa/database-type select mysql
+sympa sympa/mysql/admin-pass password <%= @mysql_root_password %>
+sympa sympa/mysql/app-pass password <%= @db_password %>
+sympa sympa/app-password-confirm password <%= @db_password %>

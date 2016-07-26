@@ -1,0 +1,24 @@
+# MANAGED BY PUPPET -- DO NOT EDIT MANUALLY
+
+archived_pidfile     /var/run/sympa/archived.pid
+bounced_pidfile      /var/run/sympa/bounced.pid
+task_manager_pidfile /var/run/sympa/task_manager.pid
+arc_path             /var/lib/sympa/wwsarchive
+bounce_path          /var/spool/sympa/wwsbounce
+
+log_facility LOCAL1
+log_module
+log_condition
+
+password_case insensitive
+cookie_expire 0
+cookie_domain <%= @vhost_name %>
+
+mhonarc /usr/bin/mhonarc
+
+ldap_force_canonical_email 1
+
+use_fast_cgi 1
+
+default_home          home
+archive_default_index thrd

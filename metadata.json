@@ -1,0 +1,22 @@
+{
+  "name": "dmcnicks-sympa",
+  "version": "1.0.3",
+  "author": "dmcnicks",
+  "summary": "Installs and configures Sympa",
+  "license": "Apache-2.0",
+  "source": "https://github.com/dmcnicks/dmcnicks-sympa.git",
+  "project_page": "https://github.com/dmcnicks/dmcnicks-sympa",
+  "issues_url": "https://github.com/dmcnicks/dmcnicks-sympa/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7.7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {"name":"puppetlabs/apache","version_requirement":">=1.4.0 <2.0.0"},
+    {"name":"puppetlabs/mysql","version_requirement":">=3.3.0 <4.0.0"}
+  ]
+}
